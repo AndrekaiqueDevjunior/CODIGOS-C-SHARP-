@@ -1,0 +1,36 @@
+using System;
+
+namespace Parcelamento
+{
+    class Program
+    {
+        enum jogo { Crash_Bandicoot, GTA, GOD_OF_WAR2, ROBLOX }
+
+        static void Main(string[] args)
+        {
+                jogo jogoEscolhido0 = jogo.Crash_Bandicoot;
+                jogo jogoEscolhido1 = jogo.GTA;
+                jogo jogoEscolhido2 = jogo.GOD_OF_WAR2;
+                jogo jogoEscolhido3 = jogo.ROBLOX;
+
+
+            Console.WriteLine("A sua lista de jogos é");
+            Console.WriteLine(jogoEscolhido0);
+            Console.WriteLine(jogoEscolhido1);
+            Console.WriteLine(jogoEscolhido2);
+            Console.WriteLine(jogoEscolhido3);
+
+            
+
+
+            Console.ReadLine();
+
+        }
+    }
+}
+
+
+
+
+
+
