@@ -1,0 +1,26 @@
+using System;
+
+namespace menudeopcoes
+{
+
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            string[] palavras = { "André", "Kaique", "Guiadoprogramador", "formação", "Node", "Curso de programação" };
+
+            foreach(string palavra in palavras)//para cada palavra no array palavras, repita o bloco de códigos
+            {
+                Console.WriteLine(palavra);
+
+
+            }
+
+            Console.ReadLine();
+
+
+        }
+    }
+
+}
+
