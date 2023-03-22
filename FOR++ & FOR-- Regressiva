@@ -1,0 +1,31 @@
+using System;
+
+namespace menudeopcoes
+{
+
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            string[] palavras = { "André", "Kaique", "Guiadoprogramador", "formação", "Node", "Curso de programação" };
+
+            for (int i = 0; i < palavras.Length; i++)
+            {
+
+                Console.Write(palavras[i]); // nao colocar o WriteLine, da a opção de agrupar e sequenciar a ordem.
+                Console.WriteLine(" - Zigurate - To the TOP  Serviços Gerais de Gestão");
+
+            }
+            Console.WriteLine("+===================================================================================================+");
+            for (int j = 5; j > 0; j--)
+            {
+                Console.WriteLine( j );  // Inversor
+                Console.WriteLine( palavras[j] );
+            }
+            Console.ReadLine();
+
+        }
+    }
+
+}
+
