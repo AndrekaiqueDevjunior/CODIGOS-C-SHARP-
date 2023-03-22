@@ -1,0 +1,28 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace menudeopcoes
+{
+    
+        class Program
+        {
+            static void Main(string[] args)
+            {
+
+            int contador = 0;
+            while (contador < 55) //looping infinito
+            {
+                Console.WriteLine("EMPRESA ZIGURATE");
+                contador++;    
+            }
+            Console.Write("FIM DA LINHA");
+            Console.ReadLine();
+           
+
+        }
+        }
+            
+}
