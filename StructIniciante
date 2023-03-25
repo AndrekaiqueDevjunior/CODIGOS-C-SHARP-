@@ -1,0 +1,35 @@
+
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Net.NetworkInformation;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace AprendendoStructs
+{
+    internal class Program
+    {
+         struct Produto  //struct == estrutura.
+        {
+            public string nome;
+            public float preco;
+            public float peso;
+            public string marca;
+
+
+        };
+
+
+        static void Main(string[] args)
+        {
+            Produto processador = new Produto();
+            processador.nome = "Ryzen 5600G";
+            processador.preco = 14f;
+            processador.peso = 1f;
+            processador.marca = " AMD RYZEN ";
+            Console.WriteLine(processador.nome);
+            Console.ReadLine();
+        }
+    }
+}
