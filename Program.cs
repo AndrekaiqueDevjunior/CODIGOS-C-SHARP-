@@ -1,159 +1,113 @@
 ﻿using System;
+using System.Collections.Generic;
 
-
-namespace CalculadoraDoCURSO
+namespace HelloWorld
 {
-    class Program
+    class ContaBancaria
     {
-        enum Menu { Soma = 1, Subtracao = 2, Divisao = 3, Multiplicacao = 4, Potencia = 5, Raiz = 6, Sair = 7 }
-        static void Main(string[] args)
+        private string titular;
+        private double saldo;
+
+        public ContaBancaria(string titular)
         {
+            this.titular = titular;
+            saldo = 0;
+        }
 
+        public double Saldo
+        {
+            get { return saldo; }
+        }
 
-            bool escolheuSair = false;
-            while (!escolheuSair) // Enquanto o usuário não escolher sair  //exiba o MENU
+        public void Depositar(double valor)
+        {
+            if (valor > 0)
             {
-                Console.WriteLine("Seja Bem-Vindo!");
-
-                Console.WriteLine("CALCULADORA CRIADA POR ANDRÉ KAIQUE DELL ISOLA!");
-                Console.WriteLine("Selecione Uma opção!");
-                Console.WriteLine("1-Soma\n2-Subtracao\n3-Divisao\n4-Multiplicacao\n5-Potencia\n6-Raiz\n7-Sair Do Menu");
-
-                Menu opcao = (Menu)int.Parse(Console.ReadLine());
-
-                switch (opcao)
-                {
-                    case Menu.Soma:
-                        Soma();
-                        break;
-
-                    case Menu.Subtracao:
-                        Subtracao();
-                        break;
-
-                    case Menu.Divisao:
-                        divisao();
-                        break;
-
-                    case Menu.Multiplicacao:
-                        multiplicacao();
-                        break;
-
-                    case Menu.Potencia:
-                        Potencia();
-                        break;
-
-                    case Menu.Raiz:
-                        Raiz();
-                        break;
-
-
-
-                    case Menu.Sair:
-                        escolheuSair = true;
-                        break;
-
-                }
-
-
-
-                Console.Clear();
+                saldo += valor;
+                Console.WriteLine($"Depósito de {valor:C} realizado. Novo saldo: {Saldo:C}");
             }
-
-
+            else
+            {
+                Console.WriteLine("O valor do depósito deve ser positivo.");
+            }
         }
 
-        static void Soma()
+        public void Sacar(double valor)
         {
-            Console.WriteLine("Soma de Dois números");
-            Console.WriteLine("Digite o primeiro numero:");
-            int a = int.Parse(Console.ReadLine());
-            Console.WriteLine("Digite o Segundo numero:");
-            int b = int.Parse(Console.ReadLine());
-            int resultado = a + b;
-            Console.WriteLine($"O resultado de {a} + {b} é: {resultado} ");
-            Console.WriteLine("\nObrigado por usar meu Software");
-            Console.WriteLine("\n+=============================+");
-            Console.WriteLine("Aperte [ENTER] Para voltar ao menu");
-            Console.ReadLine();
+            if (valor > 0 && valor <= saldo)
+            {
+                saldo -= valor;
+                Console.WriteLine($"Saque de {valor:C} realizado. Novo saldo: {Saldo:C}");
+            }
+            else
+            {
+                Console.WriteLine("Saldo insuficiente ou valor inválido para saque.");
+            }
+        }
+    }
+
+    internal class Program
+    {
+        private static bool SairPrograma()
+        {
+            Console.WriteLine("Saindo do programa...");
+            return true; // Retorna true para indicar que o programa deve sair
         }
 
-        static void Subtracao()
+        public static void Main(string[] args)
         {
-            Console.WriteLine("Subtracao de Dois números");
-            Console.WriteLine("Digite o primeiro numero:");
-            int a = int.Parse(Console.ReadLine());
-            Console.WriteLine("Digite o Segundo numero:");
-            int b = int.Parse(Console.ReadLine());
-            int resultado = a - b;
-            Console.WriteLine($"O resultado de {a} - {b} é: {resultado} ");
-            Console.WriteLine("\nObrigado por usar meu Software");
-            Console.WriteLine("\n+=============================+");
-            Console.WriteLine("Aperte [ENTER] Para voltar ao menu");
-            Console.ReadLine();
-        }
+            bool sair = false;
+            string nomeTitular = "";
+            ContaBancaria conta = null;
 
-        static void divisao()
-        {
-            Console.WriteLine("divisao de Dois números");
-            Console.WriteLine("Digite o primeiro numero:");
-            int a = int.Parse(Console.ReadLine());
-            Console.WriteLine("Digite o Segundo numero:");
-            int b = int.Parse(Console.ReadLine());
-            float resultado = (float)a / (float)b;
-            Console.WriteLine($"O resultado de {a} / {b} é: {resultado} ");
-            Console.WriteLine("\nObrigado por usar meu Software");
-            Console.WriteLine("\n+=============================+");
-            Console.WriteLine("Aperte [ENTER] Para voltar ao menu");
-            Console.ReadLine();
-        }
-        static void multiplicacao()
-        {
-            Console.WriteLine("VOCÊ ESCOLHEU multiplicacao");
-            Console.WriteLine("multiplicacao de Dois números");
-            Console.WriteLine("Digite o primeiro numero:");
-            int a = int.Parse(Console.ReadLine());
-            Console.WriteLine("Digite o Segundo numero:");
-            int b = int.Parse(Console.ReadLine());
-            float resultado = a * b;
-            Console.WriteLine($"O resultado de {a} X {b} é: {resultado} ");
-            Console.WriteLine("\nObrigado por usar meu Software");
-            Console.WriteLine("\n+=============================+");
-            Console.WriteLine("Aperte [ENTER] Para voltar ao menu");
-            Console.ReadLine();
-        }
-        static void Raiz()
-        {
-            Console.WriteLine("VOCÊ ESCOLHEU Raiz");
-            Console.WriteLine("A raiz de um numero");
-            Console.WriteLine("Digite o numero:");
-            int a = int.Parse(Console.ReadLine());
-            double resultado = Math.Sqrt(a);
-            Console.WriteLine($"A raiz de {""}  é: {resultado} ");
-            Console.WriteLine("\nObrigado por usar meu Software");
-            Console.WriteLine("\n+=============================+");
-            Console.WriteLine("Aperte [ENTER] Para voltar ao menu");
-            Console.ReadLine();
-        }
+            Console.WriteLine("Bem-Vindo!!!");
+            Console.WriteLine("1- Cadastrar usuário\n2- Sacar\n3- Depositar\n4- Sair");
 
-        static void Potencia()
-        {
-            Console.WriteLine("VOCÊ ESCOLHEU Potência");
-            Console.WriteLine("Digite a  Base");
-            int baseNum = int.Parse(Console.ReadLine());
-            Console.WriteLine("Digite o expoente:");
-            int expo = int.Parse(Console.ReadLine());
-            int resultado = (int)Math.Pow(baseNum, expo);
-            Console.WriteLine($"o Resultado é {""}  é: {resultado} ");
-            Console.WriteLine("\nObrigado por usar meu Software");
-            Console.WriteLine("\n+=============================+");
-            Console.WriteLine("Aperte [ENTER] Para voltar ao menu");
-            Console.ReadLine();
+            while (!sair)
+            {
+                int option = int.Parse(Console.ReadLine()); // Lê a opção escolhida pelo usuário
+
+                switch (option)
+                {
+                    case 1:
+                        Console.WriteLine("Digite o nome do Titular:");
+                        nomeTitular = Console.ReadLine();
+                        conta = new ContaBancaria(nomeTitular);
+                        Console.WriteLine($"Usuário {nomeTitular} cadastrado.");
+                        break;
+                    case 2:
+                        if (conta != null)
+                        {
+                            Console.WriteLine("Digite o Valor que Deseja Sacar:");
+                            double valorSaque = double.Parse(Console.ReadLine());
+                            conta.Sacar(valorSaque);
+                        }
+                        else
+                        {
+                            Console.WriteLine("Crie uma conta antes de realizar saques.");
+                        }
+                        break;
+                    case 3:
+                        if (conta != null)
+                        {
+                            Console.WriteLine("Digite o Valor que Deseja Depositar:");
+                            double valorDeposito = double.Parse(Console.ReadLine());
+                            conta.Depositar(valorDeposito);
+                        }
+                        else
+                        {
+                            Console.WriteLine("Crie uma conta antes de realizar depósitos.");
+                        }
+                        break;
+                    case 4:
+                        sair = SairPrograma();
+                        Console.WriteLine("Saindo....");
+                        break;
+                    default:
+                        Console.WriteLine("Opção inválida!");
+                        break;
+                }
+            }
         }
     }
 }
-
-
-
-
-
